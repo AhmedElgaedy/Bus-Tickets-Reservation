@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('available-seats/trip/{trip}', [ReservationController::class, 'getAvailableSeats']);
+Route::post('reservation/trip/{trip}', [ReservationController::class, 'reservationSeat']);
