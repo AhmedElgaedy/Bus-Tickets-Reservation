@@ -27,4 +27,20 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json(
+                ['error' => 'record not found'],
+                422
+            );
+        }
+        // $acceptable = request()->getAcceptableContentTypes();
+        // if (isset($acceptable[0]) && $acceptable[0] == 'application/json') {
+
+        // }
+
+        return parent::render($request, $exception);
+    }
 }
